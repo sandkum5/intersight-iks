@@ -6,8 +6,8 @@ This script creates a new Kubernetes Version Policy.
 . ./00_variables.ps1
 
 # Variables Section
-$name        = "pwsh_kubeversion1"
-$description = "pwsh Kubernetes Version Policy"
+$name        = $baseName
+$description = $descriptionValue
 
 # Get Kubernetes Version Moids
 $versionMoids = (Get-IntersightKubernetesVersion -InlineCount 'allpages' -Skip 0 -Top 10 -Filter "not(Tags/any(t:t/Key eq 'intersight.profile.SolutionOwnerType' or (t/Key eq 'intersight.kubernetes.SupportStatus' and t/Value in ('Unsupported', 'Deprecated', 'UpgradeRequired'))))").results | Select-Object Name,Moid
@@ -35,4 +35,7 @@ $versionObject = Initialize-IntersightMoMoRef -ClassId "MoMoRef" -ObjectType "Ku
 # Create Kubernetes Version Policy
 $result = New-IntersightKubernetesVersionPolicy -Name $name -Description $description -Tags $tags -Organization $myOrg -Version $versionObject
 Write-Host "Created Kubernetes Version policy '$($result.Name)' with Moid $($result.Moid)" -ForegroundColor DarkMagenta
-$result | Out-File -FilePath ./output.log -Append
+
+Write-Output "$($result.ClassId),$($result.Name),$($result.Moid)" | Out-File -FilePath ./moids.log -Append
+
+$result | Out-File -FilePath ./results.log -Append -Encoding ascii

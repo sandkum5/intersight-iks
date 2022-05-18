@@ -16,7 +16,7 @@ Set-IntersightConfiguration @ApiParams
 $orgName = "default"
 $myOrg   = Get-IntersightOrganizationOrganization -Name $orgName
 
-# Define Tags
-$tags    = Initialize-IntersightMoTag -Key 'Location' -Value 'San Jose' 
-
-$k8sSSHKey = ""  # Copy the public key from ~/.ssh/ dir. Command to generate the keys: ssh-keygen -t ecdsa -b 521
+$tags    = Initialize-IntersightMoTag -Key 'Location' -Value 'San Jose'
+$baseName = "pwsh_atx_demo1"
+$descriptionValue = "Created using PowerShell"
+$sshKeyVar = ""  # Copy the public key from ~/.ssh/ dir. Command to generate the keys: ssh-keygen -t ecdsa -b 521

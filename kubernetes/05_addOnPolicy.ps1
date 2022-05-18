@@ -6,8 +6,8 @@ This script creates a new Add-on Policy.
 . ./00_variables.ps1
 
 # Variables Section
-$name             = "pwsh_addon1"
-$description      = "pwsh Addon Policy"
+$name             = $baseName
+$description      = $descriptionValue
 $installStrategy  = "NoAction"  # Options[None, NoAction, InstallOnly, Always]
 $upgradeStrategy  = "NoAction"  # Options[None, NoAction, UpgradeOnly, ReinstallOnFailure, AlwaysReinstall]
 $overrides        = ""
@@ -41,4 +41,7 @@ $addonConfig = Initialize-IntersightKubernetesAddonConfiguration -InstallStrateg
 # Create IKS Addon-Policy
 $result = New-IntersightKubernetesAddonPolicy -Name $name -Description $description -Tags $tags -Organization $myOrg -AddonDefinition $addonDefinitionObject -AddonConfiguration $addonConfig
 Write-Host "Created Add-on policy '$($result.Name)' with Moid $($result.Moid)" -ForegroundColor DarkMagenta
-$result | Out-File -FilePath ./output.log -Append
+
+Write-Output "$($result.ClassId),$($result.Name),$($result.Moid)" | Out-File -FilePath ./moids.log -Append
+
+$result | Out-File -FilePath ./results.log -Append -Encoding ascii

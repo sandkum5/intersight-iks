@@ -6,14 +6,14 @@ This script creates a new Node Group Profile for Control Plane Node.
 . ./00_variables.ps1
 
 # Variables Section
-$name                 = "pwsh_cpNodegroup_profile"
+$name                 = $baseName
 $nodeType             = "ControlPlane"
 $desiredSize          = 1
 $minSize              = 1
 $maxSize              = 2
-$clusterProfileName   = "pwsh_k8s1"
-$k8sVersionPolicyName = "pwsh_kubeversion1"
-$ipPoolPolicyName     = "pwsh_ippool1"
+$clusterProfileName   = $baseName
+$k8sVersionPolicyName = $baseName
+$ipPoolPolicyName     = $baseName
 
 # Initialize Objects
 $clusterProfileObject = Initialize-IntersightMoMoRef -ClassId MoMoRef -ObjectType kubernetesClusterProfile -Selector "Name eq '$($clusterProfileName)'"
@@ -29,4 +29,7 @@ $labels = @($label1, $label2)
 # Create Kubernetes Node Group Profile
 $result = New-IntersightKubernetesNodeGroupProfile -Name $name -NodeType $nodeType -Desiredsize $desiredSize -Minsize $minSize -Maxsize $maxSize -ClusterProfile $clusterProfileObject -KubernetesVersion $kubernetesVersionObject -IpPools $ipPoolsObject -Labels $labels
 Write-Host "Created Control Node Group profile '$($result.Name)' with Moid $($result.Moid)" -ForegroundColor DarkMagenta
-$result | Out-File -FilePath ./output.log -Append
+
+Write-Output "$($result.ClassId),$($result.Name),$($result.Moid)" | Out-File -FilePath ./moids.log -Append
+
+$result | Out-File -FilePath ./results.log -Append -Encoding ascii

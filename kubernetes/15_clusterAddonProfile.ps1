@@ -6,10 +6,10 @@ This script creates a new Cluster Addon Profile.
 . ./00_variables.ps1
 
 # Variables Section
-$clusterAddonProfileName = "pwsh_clusteraddonProfile1"
-$clusterProfileName      = "pwsh_k8s1"
-$profileAddonName        = "pwsh_addonProfile1"
-$addonPolicyName         = "pwsh_addon1"
+$clusterAddonProfileName = $baseName
+$clusterProfileName      = $baseName
+$profileAddonName        = $baseName
+$addonPolicyName         = $baseName
 
 # Initialize Cluster Profile Object
 $clusterProfileObject = Initialize-IntersightMoMoRef -ClassId MoMoRef -ObjectType KubernetesCluster -Selector "Name eq '$($clusterProfileName)'"
@@ -30,4 +30,7 @@ $addonsObject =  Initialize-IntersightKubernetesAddon -Name $profileAddonName -A
 # Create Cluster Addon Policy
 $result = New-IntersightKubernetesClusterAddonProfile -Name $clusterAddonProfileName -Organization $myOrg -AssociatedCluster $clusterProfileObject -Addons $addonsObject
 Write-Host "Created Cluster Add-on policy '$($result.Name)' with Moid $($result.Moid)" -ForegroundColor DarkMagenta
-$result | Out-File -FilePath ./output.log -Append
+
+Write-Output "$($result.ClassId),$($result.Name),$($result.Moid)" | Out-File -FilePath ./moids.log -Append
+
+$result | Out-File -FilePath ./results.log -Append -Encoding ascii

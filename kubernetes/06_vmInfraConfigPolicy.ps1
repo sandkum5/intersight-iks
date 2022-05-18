@@ -6,8 +6,8 @@ This script creates a new VM Infra Config Policy.
 . ./00_variables.ps1
 
 # Variables Sections
-$name        = "pwsh_vmInfraConfig1"
-$description = "pwsh VM Infra Config Policy"
+$name        = $baseName
+$description = $descriptionValue
 $passphrase  = "adfadfasdaljdlfjds"
 
 # Get VMware Cluster
@@ -115,4 +115,7 @@ $vmConfigObject = Initialize-IntersightKubernetesEsxiVirtualMachineInfraConfig -
 # Create VM Infra Config Policy
 $result = New-IntersightKubernetesVirtualMachineInfraConfigPolicy -Name $name -Description $description -Organization $myOrg -Tags $tags -Target $target -VmConfig $vmConfigObject
 Write-Host "Created VM Infra Config policy '$($result.Name)' with Moid $($result.Moid)" -ForegroundColor DarkMagenta
-$result | Out-File -FilePath ./output.log -Append
+
+Write-Output "$($result.ClassId),$($result.Name),$($result.Moid)" | Out-File -FilePath ./moids.log -Append
+
+$result | Out-File -FilePath ./results.log -Append -Encoding ascii

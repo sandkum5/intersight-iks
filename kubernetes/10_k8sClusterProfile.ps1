@@ -6,14 +6,14 @@ This script creates a new Kubernetes Cluster Profile.
 . ./00_variables.ps1
 
 # Variables Section
-$name             = "pwsh_k8s1" 
-$description      = "pwsh Kubernetes Cluster profile" 
+$name             = $baseName
+$description      = $descriptionValue
 $managedMode      = "Managed" 
-$ipPoolPolicyName = "pwsh_ippool1"
+$ipPoolPolicyName = $baseName
 $lbCount          = 1
-$sshKey           = $k8sSSHKey
-$sysConfigName    = "pwsh_nodosconfig1"
-$netConfigName    = "pwsh_netcidr1"
+$sshKey           = $sshKeyVar
+$sysConfigName    = $baseName
+$netConfigName    = $baseName
 
 
 # Cluster Configuration
@@ -32,4 +32,7 @@ $netConfigObject = Initialize-IntersightMoMoRef -ClassId MoMoRef -ObjectType kub
 # Create Cluster Profile
 $result = New-IntersightKubernetesClusterProfile -Name $name -Description $description -ManagedMode $managedMode -Organization $myOrg -Tags $tags -ClusterIpPools $clusterIpPoolsObject -ManagementConfig $mgmtConfigObject -SysConfig $sysConfigObject -NetConfig $netConfigObject 
 Write-Host "Created Kubernetes Cluster policy '$($result.Name)' with Moid $($result.Moid)" -ForegroundColor DarkMagenta
-$result | Out-File -FilePath ./output.log -Append
+
+Write-Output "$($result.ClassId),$($result.Name),$($result.Moid)" | Out-File -FilePath ./moids.log -Append
+
+$result | Out-File -FilePath ./results.log -Append -Encoding ascii

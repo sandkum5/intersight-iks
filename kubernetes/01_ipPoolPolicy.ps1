@@ -10,8 +10,8 @@ $ipv4Enable         = $True
 $ipv6Enable         = $False
 
 # Variables Section
-$name               = "pwsh_ippool1"
-$description        = "pwsh demo IP Pool"
+$name               = $baseName
+$description        = $descriptionValue
 # ipv4
 $ipv4StartIp        = "10.1.1.2" # string x.x.x.x
 $ipv4Size           = 10 # Int 
@@ -59,4 +59,7 @@ switch ($case)
 }
 
 Write-Host "Created IP Pool policy '$($result.Name)' with Moid $($result.Moid)" -ForegroundColor DarkMagenta
-$result | Out-File -FilePath ./output.log -Append
+
+Write-Output "$($result.ClassId),$($result.Name),$($result.Moid)" | Out-File -FilePath ./moids.log -Append
+
+$result | Out-File -FilePath ./results.log -Append -Encoding ascii
