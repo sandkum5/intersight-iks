@@ -5,8 +5,6 @@ This script creates a new VM Instance Policy.
 # Source Variables file
 . ./00_variables.ps1
 
-Set-IntersightConfiguration @ApiParams
-
 # Variables Section
 $name        = "pwsh_vm_instance"
 $description = "pwsh VM Instance Policy"

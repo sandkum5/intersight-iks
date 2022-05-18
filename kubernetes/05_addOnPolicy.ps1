@@ -5,8 +5,6 @@ This script creates a new Add-on Policy.
 # Source Variables file
 . ./00_variables.ps1
 
-Set-IntersightConfiguration @ApiParams
-
 # Variables Section
 $name             = "pwsh_addon1"
 $description      = "pwsh Addon Policy"

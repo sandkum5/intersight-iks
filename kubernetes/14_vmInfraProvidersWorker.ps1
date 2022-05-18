@@ -6,8 +6,6 @@ Depends_on Node Group Profiles.
 # Source Variables file
 . ./00_variables.ps1
 
-Set-IntersightConfiguration @ApiParams
-
 # Variables Section
 $name                  = "pwsh_workerNodePool1"
 $vmInstanceName        = "pwsh_vm_instance"

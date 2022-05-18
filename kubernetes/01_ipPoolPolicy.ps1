@@ -5,8 +5,6 @@ This script creates a new IP Pool Policy, updates it, and destroys it.
 # Source Variables file
 . ./00_variables.ps1
 
-Set-IntersightConfiguration @ApiParams
-
 # Script Variables. Not defined in Intersight API.
 $ipv4Enable         = $True
 $ipv6Enable         = $False

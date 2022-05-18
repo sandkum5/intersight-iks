@@ -5,8 +5,6 @@ This script creates a new Kubernetes Cluster Profile.
 # Source Variables file
 . ./00_variables.ps1
 
-Set-IntersightConfiguration @ApiParams
-
 # Variables Section
 $name             = "pwsh_k8s1" 
 $description      = "pwsh Kubernetes Cluster profile" 

@@ -5,8 +5,6 @@ This script creates a new Node Group Profile for Worker Node.
 # Source Variables file
 . ./00_variables.ps1
 
-Set-IntersightConfiguration @ApiParams
-
 # Variables Section
 $name                 = "pwsh_wNodegroup_profile1"
 $nodeType             = "Worker"

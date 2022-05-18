@@ -5,8 +5,6 @@ This script creates a new Cluster Addon Profile.
 # Source Variables file
 . ./00_variables.ps1
 
-Set-IntersightConfiguration @ApiParams
-
 # Variables Section
 $clusterAddonProfileName = "pwsh_clusteraddonProfile1"
 $clusterProfileName      = "pwsh_k8s1"

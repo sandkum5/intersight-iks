@@ -5,8 +5,6 @@ This script creates a new Kubernetes Version Policy.
 # Source Variables file
 . ./00_variables.ps1
 
-Set-IntersightConfiguration @ApiParams
-
 # Variables Section
 $name        = "pwsh_kubeversion1"
 $description = "pwsh Kubernetes Version Policy"

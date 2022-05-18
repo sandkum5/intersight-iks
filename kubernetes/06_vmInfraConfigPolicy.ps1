@@ -5,8 +5,6 @@ This script creates a new VM Infra Config Policy.
 # Source Variables file
 . ./00_variables.ps1
 
-Set-IntersightConfiguration @ApiParams
-
 # Variables Sections
 $name        = "pwsh_vmInfraConfig1"
 $description = "pwsh VM Infra Config Policy"

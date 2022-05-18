@@ -5,8 +5,6 @@ This script creates a new Network CIDR Policy.
 # Source Variables file
 . ./00_variables.ps1
 
-Set-IntersightConfiguration @ApiParams
-
 # Variables Section 
 $name           = "pwsh_netcidr1"
 $description    = "pwsh network cidr policy"

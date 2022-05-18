@@ -5,8 +5,6 @@ This script creates a new Node Group Profile for Control Plane Node.
 # Source Variables file
 . ./00_variables.ps1
 
-Set-IntersightConfiguration @ApiParams
-
 # Variables Section
 $name                 = "pwsh_cpNodegroup_profile"
 $nodeType             = "ControlPlane"
