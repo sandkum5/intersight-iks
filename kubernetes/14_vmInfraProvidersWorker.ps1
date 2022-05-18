@@ -22,4 +22,6 @@ $infraConfigPolicyObject = Initialize-IntersightMoMoRef -ClassId "MoMoRef" -Obje
 $nodeGroupObject = Initialize-IntersightMoMoRef -ClassId "MoMoRef" -ObjectType "kubernetesNodeGroupProfile" -Selector "Name eq '$($nodeGroupName)'"
 
 # Create Virtual Machine Infrastructure Providers Policy
-New-IntersightKubernetesVirtualMachineInfrastructureProvider -Name $name -InstanceType $instanceTypeObject -InfraConfigPolicy $infraConfigPolicyObject -NodeGroup $nodeGroupObject
+$result = New-IntersightKubernetesVirtualMachineInfrastructureProvider -Name $name -InstanceType $instanceTypeObject -InfraConfigPolicy $infraConfigPolicyObject -NodeGroup $nodeGroupObject
+
+$result | Out-File -FilePath ./output.log -Append

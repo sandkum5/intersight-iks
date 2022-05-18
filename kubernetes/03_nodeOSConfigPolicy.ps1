@@ -15,6 +15,8 @@ $ntpServers  = "4.4.4.4"
 $timezone    = "AmericaLosAngeles"
 
 # Create Node OS Configuration/ Sys configuration Policy
-New-IntersightKubernetesSysConfigPolicy -Name $name -Description $description -Tags $tags -Organization $myOrg -DnsServers $dnsServers -NtpServers $ntpServers -Timezone $timezone
+$result = New-IntersightKubernetesSysConfigPolicy -Name $name -Description $description -Tags $tags -Organization $myOrg -DnsServers $dnsServers -NtpServers $ntpServers -Timezone $timezone
 
 # Additional Parameters: -DnsDomainName <string>
+
+$result | Out-File -FilePath ./output.log -Append

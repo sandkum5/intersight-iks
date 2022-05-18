@@ -15,4 +15,6 @@ $diskSize    = 15      # Range(in GiB) >0
 $memory      = 16384   # Range(in mebibytes) 1-4177920
 
 # Create VM Instance Type Policy
-New-IntersightKubernetesVirtualMachineInstanceType -Name $name -Description $description -Organization $myOrg -Tags $tags -Cpu $cpu -DiskSize $diskSize -Memory $memory
+$result = New-IntersightKubernetesVirtualMachineInstanceType -Name $name -Description $description -Organization $myOrg -Tags $tags -Cpu $cpu -DiskSize $diskSize -Memory $memory
+
+$result | Out-File -FilePath ./output.log -Append

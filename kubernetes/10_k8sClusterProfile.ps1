@@ -32,4 +32,6 @@ $sysConfigObject = Initialize-IntersightMoMoRef -ClassId MoMoRef -ObjectType kub
 $netConfigObject = Initialize-IntersightMoMoRef -ClassId MoMoRef -ObjectType kubernetesNetworkPolicy -Selector "Name eq '$($netConfigName)'"
 
 # Create Cluster Profile
-New-IntersightKubernetesClusterProfile -Name $name -Description $description -ManagedMode $managedMode -Organization $myOrg -Tags $tags -ClusterIpPools $clusterIpPoolsObject -ManagementConfig $mgmtConfigObject -SysConfig $sysConfigObject -NetConfig $netConfigObject 
+$result = New-IntersightKubernetesClusterProfile -Name $name -Description $description -ManagedMode $managedMode -Organization $myOrg -Tags $tags -ClusterIpPools $clusterIpPoolsObject -ManagementConfig $mgmtConfigObject -SysConfig $sysConfigObject -NetConfig $netConfigObject 
+
+$result | Out-File -FilePath ./output.log -Append

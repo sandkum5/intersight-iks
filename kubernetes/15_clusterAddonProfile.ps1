@@ -30,4 +30,6 @@ $addonConfigObject = Initialize-IntersightKubernetesAddonConfiguration -InstallS
 $addonsObject =  Initialize-IntersightKubernetesAddon -Name $profileAddonName -AddonPolicy $addonPolicy -AddonConfiguration $addonConfigObject
 
 # Create Cluster Addon Policy
-New-IntersightKubernetesClusterAddonProfile -Name $clusterAddonProfileName -Organization $myOrg -AssociatedCluster $clusterProfileObject -Addons $addonsObject
+$result = New-IntersightKubernetesClusterAddonProfile -Name $clusterAddonProfileName -Organization $myOrg -AssociatedCluster $clusterProfileObject -Addons $addonsObject
+
+$result | Out-File -FilePath ./output.log -Append

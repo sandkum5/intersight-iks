@@ -19,18 +19,18 @@ $releaseNamespace = ""
 # Get Addon Definitions Name and Moids
 $getAddonDefinition = (Get-IntersightKubernetesAddonDefinition -InlineCount allpages -Skip 0 -Top 10 -Filter "Labels ne 'Essential' and Labels ne 'EOL' and Labels ne 'Deprecated' and Labels ne 'TechPreview'").Results | Select-Object -Property Name,Moid
 
-Write-Host "Add-on list:"
+Write-Host "Add-on list:" -ForegroundColor Yellow
 foreach ($selectAddonName in $getAddonDefinition.Name) {
-    Write-Host $selectAddonName
+    Write-Host $selectAddonName -ForegroundColor Yellow
 }
 while ($True) {
     $addonName = Read-Host -Prompt "Enter an Add-on Name from the above  list"
     # Addon Names: kubernetes-dashboard, smm, ccp-monitor
     if ($addonName -in $getAddonDefinition.Name) {
-        Write-Host "Addon Name looks good!"
+        Write-Host "Addon Name looks good!" -ForegroundColor Green
         break
     } else {
-        Write-Host "Re-Enter Addon Name"
+        Write-Host "Re-Enter Addon Name" -ForegroundColor Red
     }
 }
 
@@ -41,4 +41,6 @@ $addonDefinitionObject = Initialize-IntersightMoMoRef -ClassId "MoMoRef" -Object
 $addonConfig = Initialize-IntersightKubernetesAddonConfiguration -InstallStrategy $installStrategy -UpgradeStrategy $upgradeStrategy -Overrides $overrides -ReleaseNamespace $releaseNamespace
 
 # Create IKS Addon-Policy
-New-IntersightKubernetesAddonPolicy -Name $name -Description $description -Tags $tags -Organization $myOrg -AddonDefinition $addonDefinitionObject -AddonConfiguration $addonConfig
+$result = New-IntersightKubernetesAddonPolicy -Name $name -Description $description -Tags $tags -Organization $myOrg -AddonDefinition $addonDefinitionObject -AddonConfiguration $addonConfig
+
+$result | Out-File -FilePath ./output.log -Append

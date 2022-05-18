@@ -14,4 +14,6 @@ $podNetworkCidr = "10.1.1.0/16"
 $serviceCidr    = "10.2.2.2/24"
 
 # Create Network Policy
-New-IntersightKubernetesNetworkPolicy -Name $name -Description $description -Tags $tags -Organization $myOrg  -PodNetworkCidr $podNetworkCidr -ServiceCidr $serviceCidr
+$result = New-IntersightKubernetesNetworkPolicy -Name $name -Description $description -Tags $tags -Organization $myOrg  -PodNetworkCidr $podNetworkCidr -ServiceCidr $serviceCidr
+
+$result | Out-File -FilePath ./output.log -Append
