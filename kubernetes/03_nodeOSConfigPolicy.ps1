@@ -18,5 +18,5 @@ $timezone    = "AmericaLosAngeles"
 $result = New-IntersightKubernetesSysConfigPolicy -Name $name -Description $description -Tags $tags -Organization $myOrg -DnsServers $dnsServers -NtpServers $ntpServers -Timezone $timezone
 
 # Additional Parameters: -DnsDomainName <string>
-
+Write-Host "Created Node OS Config policy '$($result.Name)' with Moid $($result.Moid)" -ForegroundColor DarkMagenta
 $result | Out-File -FilePath ./output.log -Append

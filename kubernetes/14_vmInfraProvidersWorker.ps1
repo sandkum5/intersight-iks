@@ -23,5 +23,5 @@ $nodeGroupObject = Initialize-IntersightMoMoRef -ClassId "MoMoRef" -ObjectType "
 
 # Create Virtual Machine Infrastructure Providers Policy
 $result = New-IntersightKubernetesVirtualMachineInfrastructureProvider -Name $name -InstanceType $instanceTypeObject -InfraConfigPolicy $infraConfigPolicyObject -NodeGroup $nodeGroupObject
-
+Write-Host "Created Worker VM Infra Providers policy '$($result.Name)' with Moid $($result.Moid)" -ForegroundColor DarkMagenta
 $result | Out-File -FilePath ./output.log -Append

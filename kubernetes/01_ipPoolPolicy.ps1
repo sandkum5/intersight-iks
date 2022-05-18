@@ -60,4 +60,5 @@ switch ($case)
     3 {$result = New-IntersightIppoolPool -Name $name -Description $description -Organization $myOrg -Tags $tags -IpV4Blocks $ipv4Blocks -IpV4Config $ipv4ConfigObject -IpV6Blocks $ipv6Blocks -IpV6Config $ipv6ConfigObject}
 }
 
+Write-Host "Created IP Pool policy '$($result.Name)' with Moid $($result.Moid)" -ForegroundColor DarkMagenta
 $result | Out-File -FilePath ./output.log -Append

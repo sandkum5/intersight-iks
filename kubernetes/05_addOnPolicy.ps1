@@ -42,5 +42,5 @@ $addonConfig = Initialize-IntersightKubernetesAddonConfiguration -InstallStrateg
 
 # Create IKS Addon-Policy
 $result = New-IntersightKubernetesAddonPolicy -Name $name -Description $description -Tags $tags -Organization $myOrg -AddonDefinition $addonDefinitionObject -AddonConfiguration $addonConfig
-
+Write-Host "Created Add-on policy '$($result.Name)' with Moid $($result.Moid)" -ForegroundColor DarkMagenta
 $result | Out-File -FilePath ./output.log -Append

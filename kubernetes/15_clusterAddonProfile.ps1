@@ -31,5 +31,5 @@ $addonsObject =  Initialize-IntersightKubernetesAddon -Name $profileAddonName -A
 
 # Create Cluster Addon Policy
 $result = New-IntersightKubernetesClusterAddonProfile -Name $clusterAddonProfileName -Organization $myOrg -AssociatedCluster $clusterProfileObject -Addons $addonsObject
-
+Write-Host "Created Cluster Add-on policy '$($result.Name)' with Moid $($result.Moid)" -ForegroundColor DarkMagenta
 $result | Out-File -FilePath ./output.log -Append

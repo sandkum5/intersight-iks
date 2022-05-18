@@ -116,5 +116,5 @@ $vmConfigObject = Initialize-IntersightKubernetesEsxiVirtualMachineInfraConfig -
 
 # Create VM Infra Config Policy
 $result = New-IntersightKubernetesVirtualMachineInfraConfigPolicy -Name $name -Description $description -Organization $myOrg -Tags $tags -Target $target -VmConfig $vmConfigObject
-
+Write-Host "Created VM Infra Config policy '$($result.Name)' with Moid $($result.Moid)" -ForegroundColor DarkMagenta
 $result | Out-File -FilePath ./output.log -Append

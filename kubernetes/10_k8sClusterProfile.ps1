@@ -33,5 +33,5 @@ $netConfigObject = Initialize-IntersightMoMoRef -ClassId MoMoRef -ObjectType kub
 
 # Create Cluster Profile
 $result = New-IntersightKubernetesClusterProfile -Name $name -Description $description -ManagedMode $managedMode -Organization $myOrg -Tags $tags -ClusterIpPools $clusterIpPoolsObject -ManagementConfig $mgmtConfigObject -SysConfig $sysConfigObject -NetConfig $netConfigObject 
-
+Write-Host "Created Kubernetes Cluster policy '$($result.Name)' with Moid $($result.Moid)" -ForegroundColor DarkMagenta
 $result | Out-File -FilePath ./output.log -Append

@@ -30,5 +30,5 @@ $labels = @($label1, $label2)
 
 # Create Kubernetes Node Group Profile
 $result = New-IntersightKubernetesNodeGroupProfile -Name $name -NodeType $nodeType -Desiredsize $desiredSize -Minsize $minSize -Maxsize $maxSize -ClusterProfile $clusterProfileObject -KubernetesVersion $kubernetesVersionObject -IpPools $ipPoolsObject -Labels $labels
-
+Write-Host "Created Control Node Group profile '$($result.Name)' with Moid $($result.Moid)" -ForegroundColor DarkMagenta
 $result | Out-File -FilePath ./output.log -Append

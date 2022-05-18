@@ -36,5 +36,5 @@ $versionObject = Initialize-IntersightMoMoRef -ClassId "MoMoRef" -ObjectType "Ku
 
 # Create Kubernetes Version Policy
 $result = New-IntersightKubernetesVersionPolicy -Name $name -Description $description -Tags $tags -Organization $myOrg -Version $versionObject
-
+Write-Host "Created Kubernetes Version policy '$($result.Name)' with Moid $($result.Moid)" -ForegroundColor DarkMagenta
 $result | Out-File -FilePath ./output.log -Append

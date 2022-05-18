@@ -15,5 +15,5 @@ $serviceCidr    = "10.2.2.2/24"
 
 # Create Network Policy
 $result = New-IntersightKubernetesNetworkPolicy -Name $name -Description $description -Tags $tags -Organization $myOrg  -PodNetworkCidr $podNetworkCidr -ServiceCidr $serviceCidr
-
+Write-Host "Created Network policy '$($result.Name)' with Moid $($result.Moid)" -ForegroundColor DarkMagenta
 $result | Out-File -FilePath ./output.log -Append
