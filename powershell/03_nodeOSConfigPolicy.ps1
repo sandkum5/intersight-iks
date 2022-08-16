@@ -1,11 +1,11 @@
 <#
-This script creates a new Node OS Configuration Policy.
+This script creates a SysConfig Policy.
 #>
 
 # Source Variables file
 . ./variables.ps1
 
-# Create Node OS Configuration/ Sys configuration Policy
+# Create Node OS Configuration / Sys configuration Policy
 $policyProps = @{
     Name         = $name
     Description  = $description
