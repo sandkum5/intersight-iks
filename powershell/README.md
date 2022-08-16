@@ -1,44 +1,66 @@
-# Code to Create Intersight Kubernetes Policies and Profile using PowerShell
+### Create Intersight Kubernetes Policies and Profile using PowerShell
 
-## Code Files
+#### Code Files
 `01_ipPoolPolicy.ps1`            - Creates IP Pool Policy
+
 `02_networkCIDRPolicy.ps1`       - Creates Kubernetes Network Policy
+
 `03_nodeOSConfigPolicy.ps1`      - Creates Kubernetes SysConfig Policy
+
 `04_kubeVersionPolicy.ps1`       - Creates Kubernetes Version Policy
+
 `05_addOnPolicy.ps1`             - Creates Kubernetes Addon Policy
+
 `06_vmInfraConfigPolicy.ps1`     - Creates Kubernetes Virtual Machine Infra Config Policy
+
 `07_vmInstancePolicy.ps1`        - Creates Kubernetes Virtual Machine Instance Policy
+
 `10_k8sClusterProfile.ps1`       - Creates Kubernetes Cluster Profile
+
 `11_masterNodeGroupProfiles.ps1` - Creates Kubernetes Control Plane Node Group Profile
+
 `12_vmInfraProvidersMaster.ps1`  - Creates Kubernetes Control Plane Virtual Machine Infrastructure Provider
+
 `13_workerNodeGroupProfiles.ps1` - Creates Kubernetes Worker Node Group Profile
+
 `14_vmInfraProvidersWorker.ps1`  - Creates Kubernetes Worker Virtual Machine Infrastructure Provider
+
 `15_clusterAddonProfile.ps1`     - Creates Kubernetes Cluster Addon Profile
 
 `create.ps1`    - Script to Create Intersight Kubernetes Cluster Profile and Policies
+
 `deploy.ps1`    - Script to Deploy Intersight Kubernetes Cluster Profile and Policies
+
 `expand.ps1`    - Script to Expand Intersight Kubernetes Cluster Profile and Policies
+
 `undeploy.ps1`  - Script to Expand Intersight Kubernetes Cluster Profile and Policies
+
 `destroy.ps1`   - Script to Destroy Intersight Kubernetes Cluster Profile and Policies
 
 `functions.ps1` - Functions to Add and Delete Moids from moids.json file
 
-## Files
+#### Files
 `SecretKey.txt` - Intersight SecretKey
+
 `apiKey.txt`    - Intersight API Key
+
 `variables.ps1` - Variable file to create cluster
+
 `updates.ps1`   - Variable file to expand cluster
+
 `moids.json`    - Created when IP Pool policy is created. Holds all the MOID's of the created policies and profiles
+
 `result.log`    - Created to log the Intersight Responses
 
 
 - Intersight Objects will be created as per file names starting from 01-07, 10-15.
 - During the execution, the script will prompt for inputs like Kubernetes Version, Addon Names, Vmware Cluster/Datastore/Network.
 - To individually create the policies and profiles, run: ./<xx_name.ps1>.
-  `Note:` Some Intersight objects are dependent on others. Hence, the sequence from 01 to 15.
+
+`Note:` Some Intersight objects are dependent on others. Hence, the sequence from 01 to 15.
 
 
-`Sample Output:`
+#### Sample Output
 
 ```
 > ./create.ps1
