@@ -1,0 +1,65 @@
+org_name: default
+addon:
+  install_strategy: NoAction
+  overrides: ''
+  release_namespace: ''
+  upgrade_strategy: NoAction
+api_key: 5ddf9a387564612d301eaa57/6011f4e07564612d337a31fc/62cda73b7564612d33a5011b
+cluster_addon:
+  install_strategy: NoAction
+  overrides: ''
+  upgrade_strategy: NoAction
+cp_node_group:
+  desiredsize: 1
+  maxsize: 2
+  minsize: 1
+  name: cp_ng_profile
+  node_type: ControlPlane
+cp_vm_infra_provider:
+  name: cp_vm_infra_provider
+description: Policy Created using Python SDK
+esxi_vm_infra:
+  passphrase: cisco123
+  resource_pool: ''
+ippool:
+  v4_from: 198.19.217.215
+  v4_gateway: 198.19.216.1
+  v4_netmask: 255.255.248.0
+  v4_pri_dns: 198.19.254.82
+  v4_sec_dns: 8.8.8.4
+  v4_size: 10
+  v6_from: fe80::2
+  v6_gateway: ''
+  v6_prefix: 64
+  v6_pri_dns: ''
+  v6_sec_dns: ''
+  v6_size: 10
+name: pysdk_demo
+network_config:
+  pod_network_cidr: 10.1.0.1/16
+  service_cidr: 10.2.2.2/24
+profile:
+  lb_count: 1
+  ssh_keys: ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAEjNtg6YwV8zyHcz5PA91aSUvyPiIPVRi1sTKdsdeFFKmyvBK9yBXJBqIPi1FTikEK3WFN/J6H7O0tzTZUhweJ4tACAC4DBWckWHWn1ZgWqc2nfBA26xY/0ilU9ptwUsevH+u0zQoWIhQe+DAwOxPNoB3LA76ck1BkW55quzFelak0fIg==
+secret_key: labv3secretkey.txt
+sys_config:
+  description: Policy Created using Python SDK
+  dns_domain_name: ''
+  dns_servers:
+  - 198.19.254.82
+  name: pysdk_demo
+  ntp_servers:
+  - 198.18.133.1
+  timezone: America/Los_Angeles
+vm_instance:
+  cpu: 2
+  disk_size: 10
+  memory: 16384
+worker_node_group:
+  desiredsize: 1
+  maxsize: 2
+  minsize: 1
+  name: w_ng_profile
+  node_type: Worker
+worker_vm_infra_provider:
+  name: w_vm_infra_provider
