@@ -1,7 +1,6 @@
 profile:
   lb_count: 2
-  ssh_keys: ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAEjNtg6YwV8zyHcz5PA91aSUvyPiIPVRi1sTKdsdeFFKmyvBK9yBXJBqIPi1FTikEK3WFN/J6H7O0tzTZUhweJ4tACAC4DBWckWHWn1ZgWqc2nfBA26xY/0ilU9ptwUsevH+u0zQoWIhQe+DAwOxPNoB3LA76ck1BkW55quzFelak0fIg==
-    sandkum5@SANDKUM5-M-WLMC
+  ssh_keys: xxxxxxxx
 
 cp_node_group:
   desiredsize: 3  # Options: 1 or 3
