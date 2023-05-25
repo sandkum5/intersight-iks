@@ -4,7 +4,7 @@ addon:
   overrides: ''
   release_namespace: ''
   upgrade_strategy: NoAction
-api_key: 5ddf9a387564612d301eaa57/6011f4e07564612d337a31fc/62cda73b7564612d33a5011b
+api_key: xxxxxx
 cluster_addon:
   install_strategy: NoAction
   overrides: ''
@@ -40,8 +40,8 @@ network_config:
   service_cidr: 10.2.2.2/24
 profile:
   lb_count: 1
-  ssh_keys: ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAEjNtg6YwV8zyHcz5PA91aSUvyPiIPVRi1sTKdsdeFFKmyvBK9yBXJBqIPi1FTikEK3WFN/J6H7O0tzTZUhweJ4tACAC4DBWckWHWn1ZgWqc2nfBA26xY/0ilU9ptwUsevH+u0zQoWIhQe+DAwOxPNoB3LA76ck1BkW55quzFelak0fIg==
-secret_key: labv3secretkey.txt
+  ssh_keys: xxxxxx
+secret_key: SecretKey.txt
 sys_config:
   description: Policy Created using Python SDK
   dns_domain_name: ''
